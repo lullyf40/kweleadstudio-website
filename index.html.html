@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KweLead Studio — Run your wellness, leadership, or beauty business from one place</title>
+<meta name="description" content="Bookings, payments, WhatsApp reminders, client management — in English and Spanish. Starting at $29/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --kq:#e8850c;--kqB:#f5a623;--kqD:#c26d08;--kq50:#fff8ed;--kqGlow:#ffecd2;
+  --lf:#3d7a44;--lf50:#f1f8f2;
+  --bk:#3e2c1c;--bkM:#5c4332;--bkL:#8b7355;--bk50:#faf7f2;--bk100:#f0e8dc;
+  --w:#ffffff;--cream:#fefaf4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--bk);background:var(--cream);overflow-x:hidden}
+.fd{font-family:'Playfair Display',serif}
+a{text-decoration:none;color:inherit}
+
+/* Layout */
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0}
+.section-alt{background:var(--w)}
+
+/* Language */
+.t-es{display:none}.t-fr{display:none}body.es .t-en{display:none}body.es .t-es{display:block}body.fr .t-en{display:none}body.fr .t-fr{display:block}
+.t-es-i{display:none}.t-fr-i{display:none}body.es .t-en-i{display:none}body.es .t-es-i{display:inline}body.fr .t-en-i{display:none}body.fr .t-fr-i{display:inline}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:all .4s}
+.nav.scrolled{background:rgba(254,250,244,.95);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(62,44,28,.06)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--bk);display:flex;align-items:center;gap:8px}
+.nav-logo span{color:var(--kq)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:14px;color:var(--bkL);font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--kq)}
+.nav-cta{padding:10px 24px;background:var(--kq);color:var(--w);border-radius:50px;font-weight:600;font-size:13px;border:none;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;box-shadow:0 4px 16px rgba(232,133,12,.25)}
+.nav-cta:hover{background:var(--kqD);transform:scale(1.03)}
+.lang-btn{font-size:13px;color:var(--bkL);cursor:pointer;padding:6px 14px;border-radius:50px;border:1px solid var(--bk100);background:none;font-family:'DM Sans',sans-serif;font-weight:500;transition:all .2s}
+.lang-btn:hover{border-color:var(--kq);color:var(--kq)}
+
+/* Hero */
+.hero{padding:160px 0 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(232,133,12,.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(61,122,68,.04) 0%,transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(36px,5vw,56px);line-height:1.1;font-weight:500;color:var(--bk);margin-bottom:20px}
+.hero h1 em{color:var(--kq);font-style:normal;font-weight:600}
+.hero-sub{font-size:18px;color:var(--bkL);line-height:1.7;margin-bottom:36px;max-width:480px}
+.hero-cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn-big{padding:16px 36px;border-radius:50px;font-size:16px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .3s;border:none}
+.btn-primary{background:var(--kq);color:var(--w);box-shadow:0 6px 24px rgba(232,133,12,.3)}
+.btn-primary:hover{background:var(--kqD);transform:translateY(-2px);box-shadow:0 10px 32px rgba(232,133,12,.35)}
+.btn-outline{background:none;border:2px solid var(--bk100);color:var(--bkM)}
+.btn-outline:hover{border-color:var(--kq);color:var(--kq)}
+.hero-note{font-size:13px;color:var(--bkL);margin-top:16px}
+.hero-visual{position:relative}
+.hero-mockup{width:100%;border-radius:20px;background:var(--w);box-shadow:0 20px 60px rgba(62,44,28,.1);border:1px solid rgba(62,44,28,.06);padding:20px;aspect-ratio:4/3;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.mock-bar{height:12px;border-radius:6px;background:var(--bk100)}
+.mock-bar.w1{width:60%}.mock-bar.w2{width:40%}.mock-bar.w3{width:80%}
+.mock-card{flex:1;border-radius:14px;background:var(--bk50);padding:16px;display:flex;flex-direction:column;gap:8px}
+.mock-row{display:flex;gap:10px;align-items:center}
+.mock-dot{width:36px;height:36px;border-radius:50%;flex-shrink:0}
+.mock-lines{flex:1;display:flex;flex-direction:column;gap:4px}
+.mock-line{height:8px;border-radius:4px;background:var(--bk100)}
+.mock-badge{height:22px;width:64px;border-radius:11px}
+
+/* Pain points */
+.pain{background:var(--bk);padding:48px 0}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center}
+.pain-item p{color:var(--bk100);font-size:16px;font-weight:500}
+.pain-item p em{color:var(--kqB);font-style:normal;font-weight:600}
+
+/* How it works */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}
+.step{text-align:center;position:relative}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--kq);color:var(--w);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin:0 auto 20px;box-shadow:0 6px 20px rgba(232,133,12,.25)}
+.step h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--bk);margin-bottom:10px}
+.step p{font-size:15px;color:var(--bkL);line-height:1.7}
+.step-mock{margin-top:20px;border-radius:14px;background:var(--bk50);height:160px;border:1px solid var(--bk100)}
+
+/* Features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.feat-card{padding:32px;border-radius:20px;background:var(--w);border:1px solid rgba(62,44,28,.04);transition:all .3s}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(62,44,28,.08);border-color:var(--kq)}
+.feat-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.feat-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--bk);margin-bottom:8px}
+.feat-card p{font-size:14px;color:var(--bkL);line-height:1.7}
+
+/* Who it's for */
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.who-card{text-align:center;padding:40px 24px;border-radius:20px;background:var(--cream);border:1px solid var(--bk100);transition:all .3s}
+.who-card:hover{border-color:var(--kq);background:var(--kq50)}
+.who-icon{font-size:48px;margin-bottom:16px;display:block}
+.who-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--bk);margin-bottom:8px}
+.who-card p{font-size:14px;color:var(--bkL);line-height:1.6}
+
+/* Social proof */
+.proof{text-align:center;padding:80px 0;background:var(--bk);position:relative;overflow:hidden}
+.proof::before{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:150%;border-radius:50%;background:radial-gradient(circle,rgba(232,133,12,.05) 0%,transparent 60%)}
+.proof-stat{font-family:'Playfair Display',serif;font-size:clamp(40px,8vw,72px);color:var(--kqB);font-weight:700;position:relative}
+.proof-text{font-size:20px;color:var(--bk100);margin-top:12px;position:relative;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* Pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.price-card{border-radius:20px;background:var(--w);border:1px solid var(--bk100);padding:36px;text-align:center;transition:all .3s;position:relative}
+.price-card.featured{border:2px solid var(--kq);box-shadow:0 12px 40px rgba(232,133,12,.12);transform:scale(1.03)}
+.price-card.featured::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--kq);border-radius:20px 20px 0 0}
+.price-emoji{font-size:36px;margin-bottom:12px;display:block}
+.price-name{font-family:'Playfair Display',serif;font-size:22px;color:var(--bk);font-weight:600}
+.price-amount{font-family:'Playfair Display',serif;font-size:44px;color:var(--kq);font-weight:700;margin:16px 0 4px}
+.price-amount span{font-size:16px;color:var(--bkL);font-family:'DM Sans',sans-serif;font-weight:400}
+.price-features{list-style:none;padding:0;margin:24px 0;text-align:left}
+.price-features li{padding:10px 0;font-size:14px;color:var(--bkM);border-bottom:1px solid rgba(62,44,28,.04);display:flex;align-items:center;gap:10px}
+.price-features li::before{content:'✓';color:var(--lf);font-weight:700;font-size:14px}
+.price-btn{width:100%;padding:14px;border-radius:50px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;border:none}
+.price-btn-fill{background:var(--kq);color:var(--w);box-shadow:0 4px 16px rgba(232,133,12,.25)}
+.price-btn-fill:hover{background:var(--kqD)}
+.price-btn-outline{background:none;border:2px solid var(--bk100);color:var(--bkM)}
+.price-btn-outline:hover{border-color:var(--kq);color:var(--kq)}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:48px auto 0}
+.faq-item{border-bottom:1px solid var(--bk100);overflow:hidden}
+.faq-q{padding:20px 0;font-size:16px;font-weight:600;color:var(--bk);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .2s}
+.faq-q:hover{color:var(--kq)}
+.faq-q::after{content:'+';font-size:24px;color:var(--kqB);transition:transform .3s;font-weight:300}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;padding:0 0}
+.faq-item.open .faq-a{max-height:200px;padding:0 0 20px}
+.faq-a p{font-size:15px;color:var(--bkL);line-height:1.7}
+
+/* Final CTA */
+.final-cta{background:var(--bk);padding:100px 0;text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-40%;left:30%;width:40%;height:140%;border-radius:50%;background:radial-gradient(circle,rgba(232,133,12,.06) 0%,transparent 60%)}
+.final-cta h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);color:var(--w);font-weight:400;position:relative;line-height:1.3}
+.final-cta h2 em{color:var(--kqB);font-style:normal;font-weight:600}
+.final-cta .btn-big{margin-top:32px;position:relative}
+.final-cta .hero-note{margin-top:16px;color:var(--bkL);position:relative}
+
+/* Footer */
+.footer{padding:48px 0;border-top:1px solid var(--bk100)}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:start}
+.footer-brand p{font-size:13px;color:var(--bkL);margin-top:8px}
+.footer-links{display:flex;flex-direction:column;gap:8px}
+.footer-links a{font-size:13px;color:var(--bkL);transition:color .2s}
+.footer-links a:hover{color:var(--kq)}
+.footer-copy{font-size:12px;color:var(--bkL);text-align:right}
+
+/* Section headers */
+.sh{text-align:center;margin-bottom:12px}
+.sh-label{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:6px 16px;border-radius:50px;background:var(--kq50);color:var(--kqD);margin-bottom:16px}
+.sh h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,40px);color:var(--bk);font-weight:500;line-height:1.2}
+.sh h2 em{color:var(--kq);font-style:normal;font-weight:600}
+.sh p{font-size:16px;color:var(--bkL);margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.4s}.reveal-d5{transition-delay:.5s}
+
+/* Responsive */
+@media(max-width:900px){
+  .hero-grid,.steps-grid,.feat-grid,.who-grid,.price-grid{grid-template-columns:1fr}
+  .pain-grid{grid-template-columns:1fr;gap:16px}
+  .footer-grid{grid-template-columns:1fr;text-align:center}
+  .footer-copy{text-align:center;margin-top:16px}
+  .nav-links a:not(.lang-btn):not(.nav-cta){display:none}
+  .price-card.featured{transform:none}
+  .hero{padding:120px 0 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <div class="nav-logo">🍊 KweLead <span>Studio</span></div>
+    <div class="nav-links">
+      <a href="#features" class="t-en">Features</a><a href="#features" class="t-es">Funciones</a><a href="#features" class="t-fr">Fonctionnalités</a>
+      <a href="#pricing" class="t-en">Pricing</a><a href="#pricing" class="t-es">Precios</a><a href="#pricing" class="t-fr">Tarifs</a>
+      <a href="#faq">FAQ</a>
+      <button class="lang-btn" onclick="toggleLang()"><span class="t-en-i">ES</span><span class="t-es-i">FR</span><span class="t-fr-i">EN</span></button>
+      <button class="nav-cta" onclick="scrollTo('#final')"><span class="t-en-i">Start free</span><span class="t-es-i">Empieza gratis</span><span class="t-fr-i">Essai gratuit</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ 1. HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1 class="fd reveal">
+          <span class="t-en">Run your wellness, leadership, or beauty business from <em>one place</em></span>
+          <span class="t-es">Maneja tu negocio de bienestar, liderazgo o belleza desde <em>un solo lugar</em></span>
+          <span class="t-fr">Gérez votre activité bien-être, leadership ou beauté depuis <em>un seul endroit</em></span>
+        </h1>
+        <p class="hero-sub reveal reveal-d1">
+          <span class="t-en">Bookings, payments, WhatsApp reminders, client management — in English and Spanish. Starting at $29/month.</span>
+          <span class="t-es">Reservas, pagos, recordatorios por WhatsApp, gestión de clientes — en inglés y español. Desde $29/mes.</span>
+          <span class="t-fr">Réservations, paiements, rappels WhatsApp, gestion clients — en anglais, espagnol et français. À partir de 29$/mois.</span>
+        </p>
+        <div class="hero-cta reveal reveal-d2">
+          <button class="btn-big btn-primary" onclick="scrollTo('#final')">
+            <span class="t-en-i">Start free for 30 days</span><span class="t-es-i">Empieza gratis por 30 días</span><span class="t-fr-i">Essai gratuit 30 jours</span>
+          </button>
+          <button class="btn-big btn-outline" onclick="scrollTo('#how')">
+            <span class="t-en-i">See how it works</span><span class="t-es-i">Cómo funciona</span><span class="t-fr-i">Comment ça marche</span>
+          </button>
+        </div>
+        <p class="hero-note reveal reveal-d3">
+          <span class="t-en">No credit card required. Set up in 5 minutes.</span>
+          <span class="t-es">Sin tarjeta de crédito. Configúralo en 5 minutos.</span>
+          <span class="t-fr">Sans carte bancaire. Configuration en 5 minutes.</span>
+        </p>
+      </div>
+      <div class="hero-visual reveal reveal-d2">
+        <div class="hero-mockup">
+          <div style="display:flex;gap:6px;margin-bottom:8px"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div><div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div><div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div></div>
+          <div style="display:flex;gap:12px;margin-bottom:8px">
+            <div style="flex:1;background:var(--kq50);border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--kq);font-family:'Playfair Display',serif">$3,480</div><div style="font-size:10px;color:var(--bkL);margin-top:2px">Revenue</div></div>
+            <div style="flex:1;background:var(--lf50);border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--lf);font-family:'Playfair Display',serif">87</div><div style="font-size:10px;color:var(--bkL);margin-top:2px">Clients</div></div>
+            <div style="flex:1;background:var(--bk100);border-radius:10px;padding:12px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--bk);font-family:'Playfair Display',serif">196</div><div style="font-size:10px;color:var(--bkL);margin-top:2px">Bookings</div></div>
+          </div>
+          <div class="mock-card">
+            <div style="font-size:12px;font-weight:600;color:var(--bk);margin-bottom:4px">Today's Schedule</div>
+            <div class="mock-row"><div class="mock-dot" style="background:var(--kq)"></div><div class="mock-lines"><div class="mock-line" style="width:70%"></div><div class="mock-line" style="width:45%;background:var(--kq50)"></div></div><div class="mock-badge" style="background:var(--lf50)"></div></div>
+            <div class="mock-row"><div class="mock-dot" style="background:#ec4899"></div><div class="mock-lines"><div class="mock-line" style="width:55%"></div><div class="mock-line" style="width:60%;background:var(--kq50)"></div></div><div class="mock-badge" style="background:#ede9fe"></div></div>
+            <div class="mock-row"><div class="mock-dot" style="background:var(--lf)"></div><div class="mock-lines"><div class="mock-line" style="width:65%"></div><div class="mock-line" style="width:35%;background:var(--kq50)"></div></div><div class="mock-badge" style="background:var(--kq50)"></div></div>
+            <div class="mock-row"><div class="mock-dot" style="background:#1e40af"></div><div class="mock-lines"><div class="mock-line" style="width:50%"></div><div class="mock-line" style="width:55%;background:var(--kq50)"></div></div><div class="mock-badge" style="background:#ede9fe"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 2. PAIN POINTS ═══ -->
+<section class="pain">
+  <div class="container">
+    <div class="pain-grid">
+      <div class="pain-item reveal"><p><span class="t-en">Still managing bookings through <em>WhatsApp</em>?</span><span class="t-es">¿Aún manejas reservas por <em>WhatsApp</em>?</span><span class="t-fr">Vous gérez encore vos réservations par <em>WhatsApp</em> ?</span></p></div>
+      <div class="pain-item reveal reveal-d1"><p><span class="t-en">Losing money to <em>no-shows</em> every week?</span><span class="t-es">¿Perdiendo dinero por <em>ausencias</em> cada semana?</span><span class="t-fr">Vous perdez de l'argent à cause des <em>absences</em> ?</span></p></div>
+      <div class="pain-item reveal reveal-d2"><p><span class="t-en">Can't find software <em>in your language</em>?</span><span class="t-es">¿No encuentras software <em>en tu idioma</em>?</span><span class="t-fr">Impossible de trouver un logiciel <em>dans votre langue</em> ?</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. HOW IT WORKS ═══ -->
+<section class="section section-alt" id="how">
+  <div class="container">
+    <div class="sh reveal">
+      <div class="sh-label">🍊 <span class="t-en-i">How it works</span><span class="t-es-i">Cómo funciona</span><span class="t-fr-i">Comment ça marche</span></div>
+      <h2><span class="t-en">Three steps to <em>freedom</em></span><span class="t-es">Tres pasos hacia tu <em>libertad</em></span><span class="t-fr">Trois étapes vers la <em>liberté</em></span></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal reveal-d1">
+        <div class="step-num">1</div>
+        <h3><span class="t-en">Add your services</span><span class="t-es">Agrega tus servicios</span><span class="t-fr">Ajoutez vos services</span></h3>
+        <p><span class="t-en">Yoga class, haircut, coaching session — whatever you offer. Set your price, duration, and availability.</span>
+        <span class="t-es">Clase de yoga, corte de cabello, sesión de coaching — lo que ofrezcas. Pon tu precio, duración y disponibilidad.</span>
+        <span class="t-fr">Cours de yoga, coupe de cheveux, séance de coaching — ce que vous offrez. Fixez votre prix, durée et disponibilité.</span></p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="step-num">2</div>
+        <h3><span class="t-en">Share your booking link</span><span class="t-es">Comparte tu link de reservas</span><span class="t-fr">Partagez votre lien de réservation</span></h3>
+        <p><span class="t-en">Clients book themselves through WhatsApp, Instagram, or your website. You stop being the middleman.</span>
+        <span class="t-es">Los clientes reservan solos por WhatsApp, Instagram o tu sitio web. Tú dejas de ser el intermediario.</span>
+        <span class="t-fr">Les clients réservent eux-mêmes via WhatsApp, Instagram ou votre site. Vous cessez d'être l'intermédiaire.</span></p>
+      </div>
+      <div class="step reveal reveal-d3">
+        <div class="step-num">3</div>
+        <h3><span class="t-en">Get paid and grow</span><span class="t-es">Cobra y crece</span><span class="t-fr">Soyez payé et grandissez</span></h3>
+        <p><span class="t-en">Track payments, see who's coming, send automatic reminders. All in your language.</span>
+        <span class="t-es">Rastrea pagos, mira quién viene, envía recordatorios automáticos. Todo en tu idioma.</span>
+        <span class="t-fr">Suivez les paiements, voyez qui vient, envoyez des rappels automatiques. Le tout dans votre langue.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4. FEATURES ═══ -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="sh reveal">
+      <div class="sh-label"><span class="t-en-i">Features</span><span class="t-es-i">Funciones</span><span class="t-fr-i">Fonctionnalités</span></div>
+      <h2><span class="t-en">Everything you need. <em>Nothing you don't.</em></span><span class="t-es">Todo lo que necesitas. <em>Nada que no.</em></span><span class="t-fr">Tout ce dont vous avez besoin. <em>Rien de superflu.</em></span></h2>
+    </div>
+    <div class="feat-grid" id="featGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ 5. WHO IT'S FOR ═══ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="sh reveal">
+      <div class="sh-label"><span class="t-en-i">Who it's for</span><span class="t-es-i">¿Para quién es?</span><span class="t-fr-i">Pour qui ?</span></div>
+      <h2><span class="t-en">Built for independent pros who deserve <em>better tools</em></span><span class="t-es">Hecho para profesionales independientes que merecen <em>mejores herramientas</em></span><span class="t-fr">Conçu pour les indépendants qui méritent de <em>meilleurs outils</em></span></h2>
+    </div>
+    <div class="who-grid" id="whoGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ 6. SOCIAL PROOF ═══ -->
+<section class="proof">
+  <div class="container">
+    <div class="proof-stat reveal">65,000,000</div>
+    <p class="proof-text reveal reveal-d1">
+      <span class="t-en">Spanish speakers in the US. Zero booking tools built for them. <strong style="color:var(--kqB)">Until now.</strong></span>
+      <span class="t-es">Hispanohablantes en EE.UU. Cero herramientas de reservas hechas para ellos. <strong style="color:var(--kqB)">Hasta ahora.</strong></span>
+      <span class="t-fr">Hispanophones et francophones en Amérique. Zéro outil de réservation fait pour eux. <strong style="color:var(--kqB)">Jusqu'à maintenant.</strong></span>
+    </p>
+  </div>
+</section>
+
+<!-- ═══ 7. PRICING ═══ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="sh reveal">
+      <div class="sh-label"><span class="t-en-i">Pricing</span><span class="t-es-i">Precios</span><span class="t-fr-i">Tarifs</span></div>
+      <h2><span class="t-en">Simple pricing. <em>No surprises.</em></span><span class="t-es">Precios simples. <em>Sin sorpresas.</em></span><span class="t-fr">Tarifs simples. <em>Sans surprises.</em></span></h2>
+      <p><span class="t-en">All plans include a 30-day free trial. No credit card required.</span><span class="t-es">Todos los planes incluyen 30 días gratis. Sin tarjeta de crédito.</span><span class="t-fr">Tous les plans incluent un essai gratuit de 30 jours. Sans carte bancaire.</span></p>
+    </div>
+    <div class="price-grid" id="priceGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ 8. FAQ ═══ -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="sh reveal">
+      <div class="sh-label">FAQ</div>
+      <h2><span class="t-en">Questions? <em>Answers.</em></span><span class="t-es">¿Preguntas? <em>Respuestas.</em></span><span class="t-fr">Questions ? <em>Réponses.</em></span></h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ═══ 9. FINAL CTA ═══ -->
+<section class="final-cta" id="final">
+  <div class="container">
+    <div style="font-size:48px;margin-bottom:20px;position:relative">🍊</div>
+    <h2 class="reveal">
+      <span class="t-en">Your clients are already on WhatsApp.<br>Now they can <em>book there too.</em></span>
+      <span class="t-es">Tus clientes ya están en WhatsApp.<br>Ahora también pueden <em>reservar ahí.</em></span>
+      <span class="t-fr">Vos clients sont déjà sur WhatsApp.<br>Maintenant ils peuvent aussi <em>y réserver.</em></span>
+    </h2>
+    <button class="btn-big btn-primary reveal reveal-d1" style="margin-top:32px">
+      <span class="t-en-i">Start free for 30 days</span><span class="t-es-i">Empieza gratis por 30 días</span>
+    </button>
+    <p class="hero-note reveal reveal-d2">
+      <span class="t-en">No credit card required. Set up in 5 minutes.</span>
+      <span class="t-es">Sin tarjeta de crédito. Configúralo en 5 minutos.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ═══ 10. FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">🍊 KweLead <span>Studio</span></div>
+        <p><span class="t-en">Small fruit. Big flavor.</span><span class="t-es">Pequeña fruta. Gran sabor.</span><span class="t-fr">Petit fruit. Grande saveur.</span></p>
+      </div>
+      <div class="footer-links">
+        <a href="#features"><span class="t-en">Features</span><span class="t-es">Funciones</span><span class="t-fr">Fonctionnalités</span></a>
+        <a href="#pricing"><span class="t-en">Pricing</span><span class="t-es">Precios</span><span class="t-fr">Tarifs</span></a>
+        <a href="#faq">FAQ</a>
+        <a href="#"><span class="t-en">Privacy Policy</span><span class="t-es">Política de privacidad</span><span class="t-fr">Politique de confidentialité</span></a>
+        <a href="#"><span class="t-en">Terms of Service</span><span class="t-es">Términos de servicio</span><span class="t-fr">Conditions d'utilisation</span></a>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 KweLead Studio</p>
+        <p style="margin-top:4px">A service of KweLead Global by Luffra Group LLC</p>
+        <p style="margin-top:8px"><a href="https://instagram.com" style="color:var(--kq)">Instagram</a> · <a href="https://wa.me/" style="color:var(--kq)">WhatsApp</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══ LANGUAGE ═══
+let lang = 'en';
+function toggleLang() { const cycle={en:'es',es:'fr',fr:'en'}; lang=cycle[lang]; document.body.className=lang==='en'?'':lang; }
+function scrollTo(sel) { document.querySelector(sel)?.scrollIntoView({behavior:'smooth'}); }
+
+// ═══ NAV SCROLL ═══
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ═══ REVEAL ON SCROLL ═══
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ═══ FEATURES (rendered via JS for bilingual) ═══
+const features = [
+  { icon:'📅', bg:'var(--kq50)', en:['Smart booking','Clients book themselves 24/7 from a link you share on WhatsApp or Instagram'], es:['Reservas inteligentes','Los clientes reservan solos las 24/7 desde un link que compartes por WhatsApp o Instagram'], fr:['Réservation intelligente','Vos clients réservent eux-mêmes 24h/24 depuis un lien partagé sur WhatsApp ou Instagram'] },
+  { icon:'💬', bg:'var(--lf50)', en:['WhatsApp reminders','Automatic confirmations and 24-hour reminders reduce no-shows by 30-50%'], es:['Recordatorios WhatsApp','Confirmaciones automáticas y recordatorios 24 horas antes reducen ausencias un 30-50%'], fr:['Rappels WhatsApp','Confirmations automatiques et rappels 24h avant réduisent les absences de 30 à 50%'] },
+  { icon:'💳', bg:'var(--kq50)', en:['Payments','Accept cards via Stripe. Track cash and Zelle. See who paid and who didn\'t'], es:['Pagos','Acepta tarjetas con Stripe. Rastrea efectivo y Zelle. Ve quién pagó y quién no'], fr:['Paiements','Acceptez les cartes via Stripe. Suivez les espèces et virements. Voyez qui a payé'] },
+  { icon:'👥', bg:'var(--bk100)', en:['Client management','Full history — visits, spending, notes, tags. Know your VIPs from your no-shows'], es:['Gestión de clientes','Historial completo — visitas, gastos, notas, etiquetas. Conoce a tus VIPs'], fr:['Gestion des clients','Historique complet — visites, dépenses, notes, tags. Connaissez vos VIP'] },
+  { icon:'📹', bg:'#ede9fe', en:['Virtual sessions','Paste your Zoom link. Clients get it automatically when they book online sessions'], es:['Sesiones virtuales','Pega tu link de Zoom. Los clientes lo reciben automáticamente al reservar sesiones online'], fr:['Séances virtuelles','Collez votre lien Zoom. Les clients le reçoivent automatiquement lors de la réservation'] },
+  { icon:'🌎', bg:'var(--kq50)', en:['Trilingual (EN/ES/FR)','Not a translation — built natively in English, Spanish, and French from day one'], es:['Trilingüe (EN/ES/FR)','No es una traducción — construido nativamente en inglés, español y francés desde el día uno'], fr:['Trilingue (EN/ES/FR)','Pas une traduction — conçu nativement en anglais, espagnol et français dès le premier jour'] },
+];
+document.getElementById('featGrid').innerHTML = features.map((f,i) => `
+  <div class="feat-card reveal reveal-d${i%3+1}">
+    <div class="feat-icon" style="background:${f.bg}">${f.icon}</div>
+    <h3><span class="t-en">${f.en[0]}</span><span class="t-es">${f.es[0]}</span><span class="t-fr">${f.fr[0]}</span></h3>
+    <p><span class="t-en">${f.en[1]}</span><span class="t-es">${f.es[1]}</span><span class="t-fr">${f.fr[1]}</span></p>
+  </div>`).join('');
+
+// ═══ WHO IT'S FOR ═══
+const whos = [
+  { icon:'🧘', en:['Wellness pros','Yoga teachers, personal trainers, nutritionists, massage therapists'], es:['Profesionales de bienestar','Profesores de yoga, entrenadores, nutricionistas, masajistas'], fr:['Pros du bien-être','Profs de yoga, entraîneurs, nutritionnistes, massothérapeutes'] },
+  { icon:'💇', en:['Beauty & salon','Hair stylists, nail techs, estheticians, barbers'], es:['Belleza y salón','Estilistas, manicuristas, esteticistas, barberos'], fr:['Beauté & salon','Coiffeurs, prothésistes ongulaires, esthéticiennes, barbiers'] },
+  { icon:'🎯', en:['Coaches','Executive coaches, leadership trainers, wellness coaches, career consultants'], es:['Coaches','Coaches ejecutivos, formadores de liderazgo, coaches de bienestar, consultores'], fr:['Coachs','Coachs exécutifs, formateurs en leadership, coachs bien-être, consultants'] },
+];
+document.getElementById('whoGrid').innerHTML = whos.map((w,i) => `
+  <div class="who-card reveal reveal-d${i+1}">
+    <span class="who-icon">${w.icon}</span>
+    <h3><span class="t-en">${w.en[0]}</span><span class="t-es">${w.es[0]}</span><span class="t-fr">${w.fr[0]}</span></h3>
+    <p><span class="t-en">${w.en[1]}</span><span class="t-es">${w.es[1]}</span><span class="t-fr">${w.fr[1]}</span></p>
+  </div>`).join('');
+
+// ═══ PRICING ═══
+const plans = [
+  { emoji:'🌱', name:'Seed', price:29, featured:false,
+    en:['1 staff member','50 active clients','Booking link','Payment tracking','Trilingual (EN/ES/FR)'],
+    es:['1 miembro del equipo','50 clientes activos','Link de reservas','Seguimiento de pagos','Trilingüe (EN/ES/FR)'],
+    fr:['1 membre d\'équipe','50 clients actifs','Lien de réservation','Suivi des paiements','Trilingue (EN/ES/FR)'] },
+  { emoji:'🌳', name:'Grove', price:59, featured:true,
+    en:['3 staff members','200 active clients','Everything in Seed','WhatsApp reminders','Virtual sessions','Custom booking page'],
+    es:['3 miembros del equipo','200 clientes activos','Todo de Seed','Recordatorios WhatsApp','Sesiones virtuales','Página de reservas personalizada'],
+    fr:['3 membres d\'équipe','200 clients actifs','Tout de Seed','Rappels WhatsApp','Séances virtuelles','Page de réservation personnalisée'] },
+  { emoji:'🍊', name:'Orchard', price:99, featured:false,
+    en:['Unlimited staff','Unlimited clients','Everything in Grove','Analytics dashboard','Priority support','Multi-location'],
+    es:['Equipo ilimitado','Clientes ilimitados','Todo de Grove','Panel de analíticas','Soporte prioritario','Multi-sede'],
+    fr:['Équipe illimitée','Clients illimités','Tout de Grove','Tableau de bord analytique','Support prioritaire','Multi-sites'] },
+];
+document.getElementById('priceGrid').innerHTML = plans.map((p,i) => `
+  <div class="price-card ${p.featured?'featured':''} reveal reveal-d${i+1}">
+    <span class="price-emoji">${p.emoji}</span>
+    <div class="price-name">${p.name}</div>
+    <div class="price-amount">$${p.price}<span>/mo</span></div>
+    <ul class="price-features">${p[lang].map(f=>`<li>${f}</li>`).join('')}</ul>
+    <button class="price-btn ${p.featured?'price-btn-fill':'price-btn-outline'}">
+      <span class="t-en-i">Start free</span><span class="t-es-i">Empieza gratis</span><span class="t-fr-i">Essai gratuit</span>
+    </button>
+  </div>`).join('');
+
+// ═══ FAQ ═══
+const faqs = [
+  { en:['Do I need a computer?','No. Everything works from your phone — setup, managing bookings, checking payments.'], es:['¿Necesito una computadora?','No. Todo funciona desde tu teléfono — configuración, gestión de reservas, revisión de pagos.'], fr:['Ai-je besoin d\'un ordinateur ?','Non. Tout fonctionne depuis votre téléphone — configuration, gestion des réservations, suivi des paiements.'] },
+  { en:['Is it really in my language?','Yes, natively. Not a Google Translate job. Every button, label, and notification was written by native speakers in English, Spanish, and French.'], es:['¿De verdad está en mi idioma?','Sí, nativamente. No es un trabajo de Google Translate. Cada botón, etiqueta y notificación fue escrita por hablantes nativos en inglés, español y francés.'], fr:['Est-ce vraiment dans ma langue ?','Oui, nativement. Pas du Google Translate. Chaque bouton, étiquette et notification a été rédigé par des locuteurs natifs en anglais, espagnol et français.'] },
+  { en:['Can my clients book without downloading an app?','Yes. They click a link, pick a time, done. No app download, no account creation.'], es:['¿Mis clientes pueden reservar sin descargar una app?','Sí. Hacen clic en un link, eligen un horario, listo. Sin descargar app ni crear cuenta.'], fr:['Mes clients peuvent réserver sans télécharger une app ?','Oui. Ils cliquent sur un lien, choisissent un créneau, c\'est fait. Sans téléchargement ni création de compte.'] },
+  { en:['What if my clients pay in cash?','You can mark payments as cash, card, or Zelle. Everything stays tracked in one place.'], es:['¿Y si mis clientes pagan en efectivo?','Puedes marcar pagos como efectivo, tarjeta o Zelle. Todo queda registrado en un solo lugar.'], fr:['Et si mes clients paient en espèces ?','Vous pouvez marquer les paiements en espèces, carte ou virement. Tout est suivi au même endroit.'] },
+  { en:['Can I do online sessions?','Yes. Paste your Zoom or Google Meet link when you create the service. Clients receive it automatically when they book.'], es:['¿Puedo hacer sesiones online?','Sí. Pega tu link de Zoom o Google Meet al crear el servicio. Los clientes lo reciben automáticamente al reservar.'], fr:['Puis-je faire des séances en ligne ?','Oui. Collez votre lien Zoom ou Google Meet lors de la création du service. Les clients le reçoivent automatiquement à la réservation.'] },
+  { en:['What happens after the free trial?','You pick a plan or cancel. No card is charged until you decide. No tricks.'], es:['¿Qué pasa después del periodo de prueba?','Eliges un plan o cancelas. No se cobra tu tarjeta hasta que decidas. Sin trucos.'], fr:['Que se passe-t-il après l\'essai gratuit ?','Vous choisissez un plan ou annulez. Aucun frais tant que vous n\'avez pas décidé. Sans piège.'] },
+  { en:['Is it just for wellness? I have a salon.','It works for any appointment-based business — yoga, hair, nails, coaching, massage, facials, barber, all of it.'], es:['¿Es solo para bienestar? Tengo un salón.','Funciona para cualquier negocio basado en citas — yoga, cabello, uñas, coaching, masaje, faciales, barbería, todo.'], fr:['C\'est juste pour le bien-être ? J\'ai un salon.','Ça fonctionne pour toute activité sur rendez-vous — yoga, coiffure, ongles, coaching, massage, soins du visage, barbier, tout.'] },
+];
+document.getElementById('faqList').innerHTML = faqs.map(f => `
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+      <span><span class="t-en">${f.en[0]}</span><span class="t-es">${f.es[0]}</span><span class="t-fr">${f.fr[0]}</span></span>
+    </div>
+    <div class="faq-a"><p><span class="t-en">${f.en[1]}</span><span class="t-es">${f.es[1]}</span><span class="t-fr">${f.fr[1]}</span></p></div>
+  </div>`).join('');
+
+// Re-observe dynamically added reveals
+document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
